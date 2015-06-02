@@ -1,0 +1,28 @@
+<?php
+
+class NumberTests extends DrupalUnitTestCase {
+    public static function getInfo() {
+        return array(
+            'name' => 'Numbers in words',
+            'description' => 'Create a custom module that translates numbers in numeric form into written words.',
+            'group' => 'Epicodus Examples Tests',
+        );
+    }
+
+    function testNumber() {
+        $result = test_number($_SESSION['result'] = 45);
+        $message ='This is a false result';
+        $this->assertTrue($result, $message);
+    }
+
+
+
+
+    // public function setUp() {
+    //     parent::setUp(array('number'));
+    // }
+    //
+    // public function testNumber() {
+    //
+    // }
+}

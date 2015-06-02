@@ -1,0 +1,54 @@
+<?php
+
+function number_menu() {
+
+    $items['numberToWords'] = array(
+        'title' => 'Number To Words',
+        'page callback' =>'drupal_get_form',
+        'page arguments' =>array(
+            'number_form'
+        ),
+        'access callback' =>TRUE,
+        'type'=> MENU_NORMAL_ITEM
+    );
+     $items['words'] = array(
+        'title' => 'Numbers test',
+        'page callback' => 'test_number',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function number_form(){
+    $form['number'] = array(
+    '#title' => 'Count Goal',
+    '#type' => 'textfield',
+    '#description' => t('Please enter the number you want to convert to words.'),
+    '#element_validate' => array('element_validate_integer_positive'),
+    '#required' => TRUE,
+    );
+    $form['submit']     = array(
+    '#type' => 'submit',
+    '#value' => 'Go'
+    );
+    return $form;
+}
+
+function number_form_submit($form, &$form_state) {
+    $number = $form_state['values']['number'];
+    $_SESSION['result'] =$number;
+    $form_state['redirect'] = 'words';
+}
+
+
+function test_number() {
+      if($_SESSION['result'] > 10){
+          return true;
+      }
+      else{
+          return false;
+      }
+     //return 'You input the number: ' .$_SESSION['result'];
+
+}
