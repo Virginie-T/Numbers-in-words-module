@@ -10,9 +10,21 @@ class NumberTests extends DrupalUnitTestCase {
     }
 
     function testNumber() {
-        $result = test_number($_SESSION['result'] = 45);
-        $message ='This is a false result';
-        $this->assertTrue($result, $message);
+        $result = test_number($_SESSION['result'] = 1);
+        $message ='You input the number: one';
+        $this->assertEqual($result, $message);
+    }
+
+
+    function testNumber2() {
+        $result = test_number($_SESSION['result'] = 17);
+        $message ='You input the number: seventeen';
+        $this->assertEqual($result, $message);
+    }
+    function testNumbermorethen19() {
+        $result = test_number($_SESSION['result'] = 20);
+        $message ='You input the number: twenty';
+        $this->assertEqual($result, $message);
     }
 
 

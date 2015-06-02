@@ -43,12 +43,28 @@ function number_form_submit($form, &$form_state) {
 
 
 function test_number() {
-      if($_SESSION['result'] > 10){
-          return true;
-      }
-      else{
-          return false;
-      }
-     //return 'You input the number: ' .$_SESSION['result'];
+
+     $array_number =array (
+        0 => '', 1 => 'one',2  => 'two', 3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six', 7 => 'seven', 8 => 'eight', 9 => 'nine', 10 => 'ten', 11 => 'eleven', 12 => 'twelve',
+        13 => 'thirteen', 14 =>'fourteen', 15 => 'fifteen',16=> 'sixteen', 17 =>'seventeen', 18 => 'eighteen', 19 => 'nineteen',
+     );
+     $array_number2 = array(
+        2 => 'twenty', 3 => 'thirty', 4 => 'forty' , 5 =>'fifty' , 6 => 'sixty', 7 => 'seventy' , 8 => 'eighty', 9 =>'ninty',
+     );
+
+     $word_returned = '';
+     $number = $_SESSION['result'];
+
+     if ($number > 19) {
+        $split_number = str_split($number);
+        $split_number = array_reverse($split_number);
+
+        $word_returned .= $array_number2[$split_number[1]];
+        //dpm($number[1]);
+     } else {
+         $word_returned .= $array_number[$number];
+     }
+
+     return 'You input the number: ' . $word_returned;
 
 }
